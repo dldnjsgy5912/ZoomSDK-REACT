@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './App.css';
 import { ZoomMtg } from '@zoomus/websdk';
@@ -12,19 +12,20 @@ ZoomMtg.i18n.load('ko-KO');
 ZoomMtg.i18n.reload('ko-KO');
 
 function App() {
-
+const [meetingNumber,setMeetingNumber] =useState()
+  const [passWord,setPassWord] =useState()
   // setup your signature endpoint here: https://github.com/zoom/meetingsdk-sample-signature-node.js
   var signatureEndpoint = '/zoom'
   //8mVSv2AgO2MLAleEXCeaGmmJLERo4hFkVfHG
   // This Sample App has been updated to use SDK App type credentials https://marketplace.zoom.us/docs/guides/build/sdk-app
   var apiKey = 'A_Tn1pb3SL21Mb9yI0LIIQ'
-  var meetingNumber = 83222587905
+  // var meetingNumber = 86941255125
 
   var role = 0
   var leaveUrl = 'http://localhost:3000'
   var userName = 'React'
   var userEmail = ''
-  var passWord = '9C7UbH'
+
   // pass in the registrant's token if your meeting or webinar requires registration. More info here:
   // Meetings: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/meetings#join-registered
   // Webinars: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/webinars#join-registered
@@ -84,7 +85,25 @@ function App() {
     <div className="App">
       <main>
         <h1>Zoom Meeting SDK Sample React</h1>
-
+        <div className="meeting-container">
+          <div>
+            <label htmlFor="meetingid">Meeting Number</label>
+            <input
+                type="text"
+                id="meetingid"
+                placeholder="Meeting Number"
+                value={meetingNumber}
+                onChange={(e)=>setMeetingNumber(e.target.value)}/>
+          </div>
+          <div>
+            <label htmlFor="passcode">Passcode</label>
+            <input
+                type="text"
+                placeholder="Passcode"
+                value={passWord}
+                onChange={(event => setPassWord(event.target.value))}/>
+          </div>
+        </div>
         <button onClick={getSignature}>Join Meeting</button>
       </main>
     </div>
