@@ -20,7 +20,6 @@ function App() {
   var apiKey = 'A_Tn1pb3SL21Mb9yI0LIIQ'
   var meetingNumber = 83222587905
 
-
   var role = 0
   var leaveUrl = 'http://localhost:3000'
   var userName = 'React'
